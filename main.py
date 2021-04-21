@@ -30,7 +30,7 @@ try:
                 return redirect('/')
 
             except:
-                return "There was an issue adding your task"
+                return "There was an issue adding your element to the database"
 
         else:
             tasks = Todo.query.order_by(Todo.date_created).all()
@@ -46,14 +46,20 @@ try:
             db.session.commit()
             return redirect('/')
         except:
-            return "There was a problem deleting that task"
+            return "There was a problem deleting that element"
 
     @app.route('/update/<int:id>', methods=['GET', 'POST'])
     def update(id):
         task = Todo.query.get_or_404(id)
 
         if request.method == 'POST':
-            pass
+            task.content = request.form['content']
+
+            try:
+                db.session.commit()
+                return redirect('/')
+            except:
+                return "There was an issue updating your database"
         else:
             return render_template('update.html', task=task)
 

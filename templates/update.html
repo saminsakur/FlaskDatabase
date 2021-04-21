@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Task Master</title>
+<title>Update database</title>
 {% endblock %}
 
 {% block body %}
@@ -47,8 +47,8 @@ td{
 
 <!--There was a table-->
     <form action = "/update/{{task.id}}" method = "POST" style="margin-top: 20px;">
-        <input type="text" name = "content" id = "content"/>
-        <input type="submit" value="Add Task"/>
+        <input type="text" name = "content" id = "content" value="{{task.content}}"/>
+        <input type="submit" value="Update"/>
     </form>
 </div>
 {% endblock %}
